@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>its form</p>
+    <form>
+        <input type="text"name="name" id="name" placeholder="enter the name">
+        <input type="text" name="amount" id="amount" placeholder="enter the amount">
+        <input type="email"name="email" id="email" placeholder="enter the email">
+        <input type="number" name="phone" id="phone" placeholder="enter the phone number">
+        <button type="button" id="btn" onclick="pay()">Proceed to Pay</button>
+    </form>
+    <script>
+        const pay=()=>{
+            console.log('Pay initated')
+            const name=document.getElementById('name')
+            const email=document.getElementById('email')
+            const amount=document.getElementById('amount')
+            const phone=document.getElementById('phone')
+            const response=fetch('http://localhost:3000/paynow',{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({name,email,amount,phone})
+            })
+        }
+    </script>
+</body>
+</html>
